@@ -1,20 +1,24 @@
 #!/usr/bin/env python3
 
+#imports
 from pathlib import Path
 from shutil import rmtree, copytree
 
+#declaration of global variables
 global path
 global prefPath
 global currentInstallPath
 path = '/home/pi/.notando/notes/'
 prefPath = '/home/pi/.notando/preferences/'
-currentInstallPath = '/home/pi/.notando/'
+Path = '/home/pi/.notando/'
 
+#main menu
 def menu():
     options = ['1', '2', '3', '4', '5', '6']
     choice = '0'
     while True:
         while choice not in options:
+            #the standard prompt
             print('--------------------')
             print('Thanks for using Notando')
             print('Please type a number to controll the app:')
@@ -26,7 +30,8 @@ def menu():
             print('6. Quit')
             print('--------------------')
             choice = input()
-
+        
+        #preparations for taking a note & call to take()
         if choice == '1':
             print()
             print('--------------------')
@@ -38,8 +43,9 @@ def menu():
             category = input('Category: ')
             filename = input('Headline: ')
             text = input('Text: ')
-            take(path+category+'/', filename, text)
-
+            take(Path+'notes/'+category+'/', filename, text)
+        
+        #preparations for reading a note & call to readN()
         elif choice == '2':
             print('')
             print('--------------------')
@@ -47,8 +53,9 @@ def menu():
             print('--------------------')
             category = input('Category: ')
             filename = input('Headline: ')
-            readN(path+category+'/', filename)
-
+            readN(Path+'notes/'+category+'/', filename)
+        
+        #preparations for 'editing' a note & call to edit()
         elif choice == '3':
             print('')
             print('--------------------')
@@ -56,8 +63,9 @@ def menu():
             print('--------------------')
             category = input('Category: ')
             filename = input('Headline: ')
-            edit(path+category+'/', filename)
-
+            edit(Path+'notes/'+category+'/', filename)
+        
+        #preparations for removing a note & call to removeN()
         elif choice == '4':
             print('')
             print('--------------------')
@@ -66,29 +74,34 @@ def menu():
             print('Caution! This will irreversibly delete the note.')
             category = input('Category: ')
             filename = input('Headline: ')
-            removeN(path+category+'/', filename)
-
+            removeN(Path+'notes/'+category+'/', filename)
+        
+        #show headline 'Preferences' & call prefs() to present prefs sub-menu
         elif choice == '5':
             print('')
             print('--------------------')
             print('Preferences')
             print('--------------------')
             prefs()
-
+        
+        #quit Notando
         elif choice == '6':
             exit()
-
+        
+        #resetting the choice variable so you'll be able to reuse the menu the next time
         choice = '0'
 
+#taking a note
 def take(path, filename, text):
     try:
-        with open(path+filename+'.txt', 'wt') as f:
+        with open(path+filename+'.txt', 'wt') as f:#NOTE: path doesn't need to be changed, as it does not refer to the global variable but to the argument, analogue within the next functions
             f.write(text)
         input('Note successfully added! Press enter to proceed.')
-    except BaseException as error:
+    except BaseException as error: #react to any error that may occure, analogue within the next functions
         print('An error occured:', error)
-        menu()
+        menu() #call the menu in order to prevent the program from crashing, analogue within the next functions
 
+#reading a note
 def readN(path, filename):
     try:
         with open(path+filename+'.txt', 'rt') as f:
@@ -101,6 +114,7 @@ def readN(path, filename):
         print('An error occured:', error)
         menu()
 
+#'editing' a note, while in practice only being able to add some text to the end
 def edit(path, filename):
     try:
         with open(path+filename+'.txt', 'rt') as f:
@@ -109,7 +123,7 @@ def edit(path, filename):
             print(filename+' reads so far:')
             print(oldContent)
             print('--------------------')
-        newContent = oldContent+input('New content to be inserted at the expressed place [NOTE: Currently only the end. Check note titled "IdeaForEditInserting"]: ')
+        newContent = oldContent+input('New content to be inserted at the expressed place [NOTE: Currently only the end. Check note titled "IdeaForEditInserting"]: ') #this refers to an internal note and can be safely ignored. Once Notando has achieved some usability in practice, this will be removed ;)
         with open(path+filename+'.txt', 'wt') as f:
             f.write(newContent)
         input('Press enter to proceed')
@@ -117,6 +131,7 @@ def edit(path, filename):
         print('An error occured:', error)
         menu()
 
+#deleting a note irreversibly
 def removeN(path, filename):
     try:
         Path(path+filename+'.txt').unlink()
@@ -125,13 +140,15 @@ def removeN(path, filename):
         print('An error occured:', error)
         menu()
 
+#show 
 def prefs():
     try:
+        #this sub-menu works the same way as the main menu
         terminatePrefs = False
         while terminatePrefs == False:
             suboptions = ['1', '2', '3', '4', '5', '6', '7']
             subchoice = '0'
-            while subchoice not in suboptions:
+            while subchoice not in suboptions: #prefs menu's standard prompt
                 print('--------------------')
                 print('1. Make a category')
                 print('2. Remove a category')
@@ -142,26 +159,26 @@ def prefs():
                 print('7. Return to main menu')
                 print('--------------------')
                 subchoice = input()
-            if subchoice == '1':
+            if subchoice == '1': # prepare & make a new category
                 print('--------------------')
                 print('Make a category')
                 print('--------------------')
                 catname = input('Title: ')
                 mkcat(path, catname)
-            elif subchoice == '2':
+            elif subchoice == '2': #prepare & remove a category
                 print('--------------------')
                 print('Remove a category')
                 print('--------------------')
                 catname = input('Title: ')
                 rmcat(path, catname)
-            elif subchoice == '3':
+            elif subchoice == '3': #prepare & rename a category
                 print('--------------------')
                 print('Rename a category')
                 print('--------------------')
                 oldname = input('current name: ')
                 newname = input('new name: ')
                 renameCat(oldname, newname)
-            elif subchoice == '4':
+            elif subchoice == '4': #make a backup image of Notando. Check the print-statements
                 print('--------------------')
                 print('Copy Notando')
                 print('--------------------')
@@ -170,78 +187,87 @@ def prefs():
                 print('Caution! This will entirely and irreversibly overwrite the provided directory if it is already existing.')
                 newpath = input('Enter the entire path to the new location: ')
                 copyNotando(newpath)
-            elif subchoice == '5':
+            elif subchoice == '5': #prepare & change the standard path
                 print('--------------------')
                 print('Change standard path')
                 print('--------------------')
                 print('This will store new notes to a new location provided in the process and save this change.')
                 newpath = input('Enter the entire path to the new location: ')
                 changePath(newpath)
-            elif subchoice == '6':
+            elif subchoice == '6': #change the language. Not yet available.
                 changeLang()
-            elif subchoice == '7':
+            elif subchoice == '7': #set the terminatePrefs variable to True in order to leave the prefs sub-menu
                 terminatePrefs = True
-            subchoice = '0'
+            subchoice = '0' #ensure the sub-menu is reusable
 
     except BaseException as error:
         print('An error occured:', error)
         menu()
 
-def mkcat(path, catname):
+#pref-option: make up a new category
+def mkcat(path, catname): #path again refers to tis attribute in the function, analogue to the following ones
     try:
         newCat = Path(path+catname+'/')
         newCat.mkdir(exist_ok=True)
-        print(catname, 'successfully made')
+        input(catname, 'successfully made. Press Enter to proceed.')
     except BaseException as error:
         print('An error occured:', error)
         prefs()
 
+#pref-option: remove a category
 def rmcat(path, catname):
     try:
         rmtree(path+catname+'/')
-        print(catname, 'successfully removed')
+        input(catname, 'successfully removed. Press Enter to proceed.')
     except BaseException as error:
         print('An error occured:', error)
         prefs()
 
+#pref-option: rename an existing category 
 def renameCat(oldname, newname):
     try:
         oldpath = Path(path+oldname+'/')
         newpath = Path(path+newname+'/')
         oldpath.rename(newpath)
-        print(oldname, 'successfully renamed to', newname)
+        input(oldname, 'successfully renamed to', newname, '. Press Enter to proceed.')
     except BaseException as error:
         print('An error occured:', error)
         prefs()
 
+#pref-option: change the standard path
 def changePath(newpath):
     try:
         oldpath = path
         path = newpath
         with open(prefPath+'stdpath.txt', 'wt') as f:
             f.write(newpath)
-        print('Standard path for storing notes successfully changed from: '+oldpath+' to: '+newpath)
+        input('Standard path for storing notes successfully changed from: '+oldpath+' to: '+newpath+'. Press Enter to proceed.')
     except BaseException as error:
         print('An error occured:', error)
         prefs()
 
+#pref-option: make a backup-image (while in fact only making a copy of the whole program in a different place)
 def copyNotando(newpath):
     try:
         if Path(newpath).exists():
             rmtree(newpath)
-        copytree(currentInstallPath, newpath)
+        copytree(Path, newpath)
         input('Notando has been copied successfully. Press Enter to proceed.')
     except BaseException as error:
         print('An error occured:', error)
         prefs()
 
+#pref-option: change the language
 def changeLang():
-    print('This feature is not available yet. Hope you do speak English...')
+    input('This feature is not available yet. Hope you do speak English... Either way, please press Enter to proceed')
 
+#this is written to the terminal when the program's started
 print('====================')
-print('NOTANDO 1.0')
+print('NOTANDO 1.1')
 print('The Note Taking And Organizing App – (c) 2021 by Nina Tolfersheimer')
+print('You may share and/or vary Notando yourself, but you are not allowed to use it for commercial purposes.')
+print('When spreading a varied version of Notando, you must name the original author Nina Tolfersheimer')
 print('====================')
 print('')
 
-menu()
+menu() #initialy calling the main menu
