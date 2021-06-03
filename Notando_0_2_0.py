@@ -263,11 +263,12 @@ def changeLang():
 
 #this is written to the terminal when the program's started
 print('====================')
-print('NOTANDO 1.1')
+print('NOTANDO 0.2.0')
 print('The Note Taking And Organizing App – (c) 2021 by Nina Tolfersheimer')
 print('You may share and/or vary Notando yourself, but you are not allowed to use it for commercial purposes.')
 print('When spreading a varied version of Notando, you must name the original author Nina Tolfersheimer')
 print('====================')
+print('Please notice that this version of Notando should be considered unstable.')
 print('')
 
 menu() #initialy calling the main menu
