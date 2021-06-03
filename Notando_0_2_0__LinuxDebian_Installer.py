@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 
-#PURPOSE: This script will set up the required directories and files for Notando 1.1 on your Linux Debian device. It should work as well on interchangeable devices such as USB-sticks
+#PURPOSE: This script will set up the required directories and files for Notando 0.2.0 on your Linux Debian device. It should work as well on interchangeable devices such as USB-sticks
 
 #Imports
 from pathlib import Path
 
 #this will be written to the terminal when the program is started
 print('====================')
-print('NOTANDO 1.1 – Installer for Linux Debian')
+print('NOTANDO 0.2.0 – Installer for Linux Debian')
 print('====================')
 print()
 print('Thanks for choosing Notando!')
@@ -18,8 +18,8 @@ print('PLEASE NOTE – IMPORTANT INFORMATION – READ CAREFULLY')
 print()
 print()
 print('====================')
-print('NOTANDO 1.1 – Terms of Use')
-print('NOTANDO 1.1 – Data Protection Policy')
+print('NOTANDO 0.2.0 – Terms of Use')
+print('NOTANDO 0.2.0 – Data Protection Policy')
 print('====================')
 print()
 print('I. Definitions, limits of this policy')
@@ -60,7 +60,7 @@ while yesno not in ['yes', 'y', 'no', 'n']:
 
 if yesno == 'yes' or yesno == 'y':
 
-    destPath = input('Where do you want Notando to keep all the files? Please provide a full path with / at the end: ')+'.notando/'
+    destPath = input('Where do you want Notando to keep all the files? Please provide a full path with / at the end: ')+'.notando_0_2_0/'
     installPath = Path(destPath)
 
     try:
