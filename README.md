@@ -33,5 +33,5 @@ You're explicitely encouraged to check out the actual code yourself at [GitHub](
 There is a separate policy somewhere, and a default one over on [Nina Tolfersheimer's GitHub](https://github.com/NinaTolfersheimer/Notando/). However, those might not be the valid ones and may differ from the valid one! The only valid policy is the one you're presented with while installing through an installer script and that should be stored somewhere within the initial release directory. The default policy on GitHub is only valid for your specific installation if your initial resource lacks such a policy for some reason.
 Check out those policies for further information!
 
-
+## About the author
 _Notando has been created and is maintained by [Nina Tolfersheimer](https://github.com/NinaTolfersheimer). Make sure to check out [my projects website](https://ninatolfersheimer.github.io) as well as [my blog](http://raspberrypi), if you're located within the same LAN as my computer._ :wink:
