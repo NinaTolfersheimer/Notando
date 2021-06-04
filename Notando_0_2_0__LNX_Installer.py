@@ -67,7 +67,8 @@ if yesno == 'yes' or yesno == 'y':
 
     destPath = input('Where do you want Notando to keep all the files? Please provide an absolute path with / at the end: ')+'.notando_0_2_0/'
     copyPath = Path(destPath)
-    installPath = Path('/home/'+usrname+'/.notando_0_2_0/')
+    installPath = '/home/'+usrname+'/.notando_0_2_0/'
+    installPathPath = Path('/home/'+usrname+'/.notando_0_2_0/')
 
     try:
         installPath.mkdir(exist_ok = True)
@@ -97,7 +98,7 @@ if yesno == 'yes' or yesno == 'y':
             f.write(destPath)
         
         try:
-            copytree(installPath, copyPath)
+            copytree(installPathPath, copyPath)
         except BaseException as error:
             print('An error occured when copying Notando to your desired location:', error)
 
