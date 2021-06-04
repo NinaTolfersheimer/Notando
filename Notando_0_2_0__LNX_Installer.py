@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
 
-#PURPOSE: This script will set up the required directories and files for Notando 0.2.0 on your Linux Debian device. It should work as well on interchangeable devices such as USB-sticks
+#PURPOSE: This script will set up the required directories and files for Notando 0.2.0 on your Linux device. It should work as well on interchangeable devices such as USB-sticks
 
 #Imports
 from pathlib import Path
+from shutil import copytree
+from getpass import getuser
+
+usrname = getuser()
 
 #this will be written to the terminal when the program is started
 print('====================')
-print('NOTANDO 0.2.0 – Installer for Linux Debian')
+print('NOTANDO 0.2.0 – Installer for Linux')
 print('====================')
 print()
 print('Thanks for choosing Notando!')
@@ -61,23 +65,24 @@ while yesno not in ['yes', 'y', 'no', 'n']:
 
 if yesno == 'yes' or yesno == 'y':
 
-    destPath = input('Where do you want Notando to keep all the files? Please provide a full path with / at the end: ')+'.notando_0_2_0/'
-    installPath = Path(destPath)
+    destPath = input('Where do you want Notando to keep all the files? Please provide an absolute path with / at the end: ')+'.notando_0_2_0/'
+    copyPath = Path(destPath)
+    installPath = Path('/home/'+usrname+'/.notando_0_2_0/')
 
     try:
         installPath.mkdir(exist_ok = True)
 
-        notesPath = Path(destPath+'notes/')
-        prefsPath = Path(destPath+'preferences/')
+        notesPath = Path(installPath+'notes/')
+        prefsPath = Path(installPath+'preferences/')
 
         notesPath.mkdir(exist_ok = True)
         prefsPath.mkdir(exist_ok = True)
 
-        stdCatPath = Path(destPath+'notes/general/')
+        stdCatPath = Path(installPath+'notes/general/')
 
         stdCatPath.mkdir(exist_ok = True)
 
-        with open(destPath+'notes/general/firstNote.txt', 'wt') as f:
+        with open(installPath+'notes/general/firstNote.txt', 'wt') as f:
             f.write('This is Notando. Here\'s your first note. You may keep, edit or remove it any time and start noting!.')
 
         destlang = input('Which language do you prefer for your installation? Choose from the following ones: [English] ')
@@ -85,11 +90,16 @@ if yesno == 'yes' or yesno == 'y':
         while destlang not in ['English']:
             destlang = input('That\'s not a valid language! Choose from [English] and mind the case: ')
 
-        with open(destPath+'preferences/lang.txt', 'wt') as f:
+        with open(installPath+'preferences/lang.txt', 'wt') as f:
             f.write(destlang)
 
-        with open(destPath+'preferences/stdpath.txt', 'wt') as f:
+        with open(installPath+'preferences/stdpath.txt', 'wt') as f:
             f.write(destPath)
+        
+        try:
+            copytree(installPath, copyPath)
+        except BaseException as error:
+            print('An error occured when copying Notando to your desired location:', error)
 
         print('--------------------')
         print('Installation successfully completed!')
