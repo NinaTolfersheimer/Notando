@@ -4,12 +4,12 @@ _A small open-source alternative to MS OneNote etc. Notando is still under const
 ## What Notando 0.2.1 can do
 Notando 0.2.1 presents you with a menu to choose options from. You can:
 
-1. Take a note – _Allows you to take a note and store it in a specific category. This will take some string and store in a file with the path _ ```<standard path>/.notando/notes/<provided category>/<provided headline>.txt```
-The so-called 'standard path' is the path to the directory where Notando lives itself._
-2. Read your notes – _Lets you read a specified note. This will ask for the category the note is stored within as well as the headline you gave it. It will then try to read from the path _```<standard path>/.notando/notes/<provided category>/<provided headline>.txt```
+1. Take a note – _Allows you to take a note and store it in a specific category. This will take some string and store in a file with the path_ ```<standard path>/.notando/notes/<provided category>/<provided headline>.txt```
+_. The so-called 'standard path' is the path to the directory where Notando lives itself._
+2. Read your notes – _Lets you read a specified note. This will ask for the category the note is stored within as well as the headline you gave it. It will then try to read from the path_ ```<standard path>/.notando/notes/<provided category>/<provided headline>.txt```
 _and present you with the content of the specified text file._
 3. Edit a note – _Allows you to 'edit' a note, although you can currently only write to the file's end. This performs essentially the same task as read would do, but after presenting the file's content, edit will take some string, add it to the end of the content, and re-write the file to the provided path._
-4. Remove a note – _Allows you to permanently and irreversibly delete a note. Takes a category and a headline and removes the file at the path _```<standard path>/.notando/notes/<provided category>/<provided headline>.txt```
+4. Remove a note – _Allows you to permanently and irreversibly delete a note. Takes a category and a headline and removes the file at the path_ ```<standard path>/.notando/notes/<provided category>/<provided headline>.txt```
 5. set Preferences – _You enter the following prefs sub-menu:_
   * Make a category – _Allows you to set up a new category. Takes a name and tries to make a directory with_ ```<standard path>/.notando/notes/<provided category>/```
   * Remove a category – _Allows you to delete a category permanently and irreversibly. Takes a name and tries to remove the directory with_ ```<standard path>/.notando/notes/<provided category>/``` _recursively._
