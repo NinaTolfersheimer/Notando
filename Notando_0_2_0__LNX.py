@@ -9,7 +9,7 @@ from getpass import getuser
 #declaration of global variables
 #global path #deprecated
 #global prefPath #deprecated
-global Path
+global path
 global usrname
 #path = '/home/pi/.notando/notes/' #deprecated
 #prefPath = '/home/pi/.notando/preferences/' #deprecated
@@ -17,7 +17,7 @@ global usrname
 usrname = getuser()
 
 with open('/home/'+usrname+'/.notando/preferences/stdpath.txt', 'rt') as f:
-    Path = f.read()
+    path = f.read()
 
 #main menu
 def menu():
@@ -50,7 +50,7 @@ def menu():
             category = input('Category: ')
             filename = input('Headline: ')
             text = input('Text: ')
-            take(Path+'notes/'+category+'/', filename, text)
+            take(path+'notes/'+category+'/', filename, text)
         
         #preparations for reading a note & call to readN()
         elif choice == '2':
@@ -60,7 +60,7 @@ def menu():
             print('--------------------')
             category = input('Category: ')
             filename = input('Headline: ')
-            readN(Path+'notes/'+category+'/', filename)
+            readN(path+'notes/'+category+'/', filename)
         
         #preparations for 'editing' a note & call to edit()
         elif choice == '3':
@@ -70,7 +70,7 @@ def menu():
             print('--------------------')
             category = input('Category: ')
             filename = input('Headline: ')
-            edit(Path+'notes/'+category+'/', filename)
+            edit(path+'notes/'+category+'/', filename)
         
         #preparations for removing a note & call to removeN()
         elif choice == '4':
@@ -81,7 +81,7 @@ def menu():
             print('Caution! This will irreversibly delete the note.')
             category = input('Category: ')
             filename = input('Headline: ')
-            removeN(Path+'notes/'+category+'/', filename)
+            removeN(path+'notes/'+category+'/', filename)
         
         #show headline 'Preferences' & call prefs() to present prefs sub-menu
         elif choice == '5':
@@ -99,9 +99,9 @@ def menu():
         choice = '0'
 
 #taking a note
-def take(path, filename, text):
+def take(argpath, filename, text):
     try:
-        with open(path+filename+'.txt', 'wt') as f:#NOTE: path doesn't need to be changed, as it does not refer to the global variable but to the argument, analogue within the next functions
+        with open(argpath+filename+'.txt', 'wt') as f:
             f.write(text)
         input('Note successfully added! Press enter to proceed.')
     except BaseException as error: #react to any error that may occure, analogue within the next functions
@@ -109,9 +109,9 @@ def take(path, filename, text):
         menu() #call the menu in order to prevent the program from crashing, analogue within the next functions
 
 #reading a note
-def readN(path, filename):
+def readN(argpath, filename):
     try:
-        with open(path+filename+'.txt', 'rt') as f:
+        with open(argpath+filename+'.txt', 'rt') as f:
             print('--------------------')
             print(filename+' reads:')
             print(f.read())
@@ -122,16 +122,16 @@ def readN(path, filename):
         menu()
 
 #'editing' a note, while in practice only being able to add some text to the end
-def edit(path, filename):
+def edit(argpath, filename):
     try:
-        with open(path+filename+'.txt', 'rt') as f:
+        with open(argpath+filename+'.txt', 'rt') as f:
             oldContent = f.read()
             print('--------------------')
             print(filename+' reads so far:')
             print(oldContent)
             print('--------------------')
         newContent = oldContent+input('New content to be inserted at the expressed place [NOTE: Currently only the end. Check note titled "IdeaForEditInserting"]: ') #this refers to an internal note and can be safely ignored. Once Notando has achieved some usability in practice, this will be removed ;)
-        with open(path+filename+'.txt', 'wt') as f:
+        with open(argpath+filename+'.txt', 'wt') as f:
             f.write(newContent)
         input('Press enter to proceed')
     except BaseException as error:
@@ -139,9 +139,9 @@ def edit(path, filename):
         menu()
 
 #deleting a note irreversibly
-def removeN(path, filename):
+def removeN(argpath, filename):
     try:
-        Path(path+filename+'.txt').unlink()
+        Path(argpath+filename+'.txt').unlink()
         input(filename+' removed successfully. Press enter to proceed.')
     except BaseException as error:
         print('An error occured:', error)
@@ -198,8 +198,8 @@ def prefs():
                 print('--------------------')
                 print('Change standard path')
                 print('--------------------')
-                print('This will store new notes to a new location provided in the process and save this change.')
-                newpath = input('Enter the entire path to the new location: ')
+                print('Caution! Only do this if you\'ve manually moved your .notando file.')
+                newpath = input('Enter the entire path to the new location of .notando: ')
                 changePath(newpath)
             elif subchoice == '6': #change the language. Not yet available.
                 changeLang()
@@ -212,9 +212,9 @@ def prefs():
         menu()
 
 #pref-option: make up a new category
-def mkcat(path, catname): #path again refers to tis attribute in the function, analogue to the following ones
+def mkcat(argpath, catname): #path again refers to tis attribute in the function, analogue to the following ones
     try:
-        newCat = Path(path+catname+'/')
+        newCat = Path(argpath+catname+'/')
         newCat.mkdir(exist_ok=True)
         input(catname, 'successfully made. Press Enter to proceed.')
     except BaseException as error:
@@ -222,9 +222,9 @@ def mkcat(path, catname): #path again refers to tis attribute in the function, a
         prefs()
 
 #pref-option: remove a category
-def rmcat(path, catname):
+def rmcat(argpath, catname):
     try:
-        rmtree(path+catname+'/')
+        rmtree(argpath+catname+'/')
         input(catname, 'successfully removed. Press Enter to proceed.')
     except BaseException as error:
         print('An error occured:', error)
