@@ -54,18 +54,6 @@ print('(4) Notando does only use data directly provided to the app by yourself (
 print()
 print()
 
-
-
-
-
-
-
-
-      
-
-      
-
-
 yesno = input('Do you accept the terms above? [yes/no] ')
 
 while yesno not in ['yes', 'y', 'no', 'n']:
@@ -101,7 +89,7 @@ if yesno == 'yes' or yesno == 'y':
             f.write(destlang)
 
         with open(destPath+'preferences/stdpath.txt', 'wt') as f:
-            f.write(destPath+'notes/')
+            f.write(destPath)
 
         print('--------------------')
         print('Installation successfully completed!')
