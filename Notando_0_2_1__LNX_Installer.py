@@ -71,7 +71,7 @@ if yesno == 'yes' or yesno == 'y':
     installPathPath = Path('/home/'+usrname+'/.notando/')
 
     try:
-        installPath.mkdir(exist_ok = True)
+        installPathPath.mkdir(exist_ok = True)
 
         notesPath = Path(installPath+'notes/')
         prefsPath = Path(installPath+'preferences/')
