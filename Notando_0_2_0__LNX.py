@@ -130,7 +130,7 @@ def edit(argpath, filename):
             print(filename+' reads so far:')
             print(oldContent)
             print('--------------------')
-        newContent = oldContent+input('New content to be inserted at the expressed place [NOTE: Currently only the end. Check note titled "IdeaForEditInserting"]: ') #this refers to an internal note and can be safely ignored. Once Notando has achieved some usability in practice, this will be removed ;)
+        newContent = oldContent+input('New content to be inserted at the end: ') 
         with open(argpath+filename+'.txt', 'wt') as f:
             f.write(newContent)
         input('Press enter to proceed')
@@ -171,13 +171,13 @@ def prefs():
                 print('Make a category')
                 print('--------------------')
                 catname = input('Title: ')
-                mkcat(path, catname)
+                mkcat(path+'notes/', catname)
             elif subchoice == '2': #prepare & remove a category
                 print('--------------------')
                 print('Remove a category')
                 print('--------------------')
                 catname = input('Title: ')
-                rmcat(path, catname)
+                rmcat(path+'notes/', catname)
             elif subchoice == '3': #prepare & rename a category
                 print('--------------------')
                 print('Rename a category')
@@ -199,7 +199,7 @@ def prefs():
                 print('Change standard path')
                 print('--------------------')
                 print('Caution! Only do this if you\'ve manually moved your .notando file.')
-                newpath = input('Enter the entire path to the new location of .notando: ')
+                newpath = input('Enter the absolute path to the new location of .notando with / at the end: ')
                 changePath(newpath)
             elif subchoice == '6': #change the language. Not yet available.
                 changeLang()
@@ -212,11 +212,11 @@ def prefs():
         menu()
 
 #pref-option: make up a new category
-def mkcat(argpath, catname): #path again refers to tis attribute in the function, analogue to the following ones
+def mkcat(argpath, catname):
     try:
         newCat = Path(argpath+catname+'/')
         newCat.mkdir(exist_ok=True)
-        input(catname, 'successfully made. Press Enter to proceed.')
+        input(catname+' successfully made. Press Enter to proceed.')
     except BaseException as error:
         print('An error occured:', error)
         prefs()
@@ -225,7 +225,7 @@ def mkcat(argpath, catname): #path again refers to tis attribute in the function
 def rmcat(argpath, catname):
     try:
         rmtree(argpath+catname+'/')
-        input(catname, 'successfully removed. Press Enter to proceed.')
+        input(catname+' successfully removed. Press Enter to proceed.')
     except BaseException as error:
         print('An error occured:', error)
         prefs()
@@ -233,10 +233,10 @@ def rmcat(argpath, catname):
 #pref-option: rename an existing category 
 def renameCat(oldname, newname):
     try:
-        oldpath = Path(path+oldname+'/')
-        newpath = Path(path+newname+'/')
+        oldpath = Path(path+'notes/'+oldname+'/')
+        newpath = Path(path+'notes/'+newname+'/')
         oldpath.rename(newpath)
-        input(oldname, 'successfully renamed to', newname, '. Press Enter to proceed.')
+        input(oldname+' successfully renamed to '+newname+'. Press Enter to proceed.')
     except BaseException as error:
         print('An error occured:', error)
         prefs()
@@ -244,11 +244,12 @@ def renameCat(oldname, newname):
 #pref-option: change the standard path
 def changePath(newpath):
     try:
-        oldpath = path
+        with open('/home/'+usrname+'/.notando/preferences/stdpath.txt', 'rt') as f:
+            oldpath = f.read()
         path = newpath
-        with open(prefPath+'stdpath.txt', 'wt') as f:
+        with open('/home/'+usrname+'/.notando/preferences/stdpath.txt', 'wt') as f:
             f.write(newpath)
-        input('Standard path for storing notes successfully changed from: '+oldpath+' to: '+newpath+'. Press Enter to proceed.')
+        input('Standard path successfully changed from: '+oldpath+' to: '+newpath+'. Press Enter to proceed.')
     except BaseException as error:
         print('An error occured:', error)
         prefs()
@@ -258,7 +259,7 @@ def copyNotando(newpath):
     try:
         if Path(newpath).exists():
             rmtree(newpath)
-        copytree(Path, newpath)
+        copytree(path, newpath)
         input('Notando has been copied successfully. Press Enter to proceed.')
     except BaseException as error:
         print('An error occured:', error)
