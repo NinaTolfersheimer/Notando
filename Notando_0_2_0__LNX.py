@@ -1,16 +1,23 @@
 #!/usr/bin/env python3
+#Notando v0.2.0 for Linux systems running at least Python 3.6
 
 #imports
 from pathlib import Path
 from shutil import rmtree, copytree
+from getpass import getuser
 
 #declaration of global variables
-global path
-global prefPath
-global currentInstallPath
-path = '/home/pi/.notando/notes/'
-prefPath = '/home/pi/.notando/preferences/'
-Path = '/home/pi/.notando/'
+#global path #deprecated
+#global prefPath #deprecated
+global Path
+global usrname
+#path = '/home/pi/.notando/notes/' #deprecated
+#prefPath = '/home/pi/.notando/preferences/' #deprecated
+#Path = '/home/pi/.notando/' #deprecated
+usrname = getuser()
+
+with open('/home/'+usrname+'/.notando/preferences/stdpath.txt', 'rt') as f:
+    Path = f.read()
 
 #main menu
 def menu():
