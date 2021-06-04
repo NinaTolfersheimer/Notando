@@ -29,8 +29,8 @@ if lang == 'English':
 
     destPath = input('Where do you want Notando to keep all the files? Please provide an absolute path with / at the end: ')+'.notando/'
     copyPath = Path(destPath)
-    installPath = 'C:/users/'+usrname+'/.notando/'
-    installPathPath = Path('C:/users'+usrname+'/.notando/')
+    installPath = input('Please locate your personal home directory, i.e. C:/users/<yourname>/')+'.notando/'
+    installPathPath = Path(installPath)
 
     try:
         installPathPath.mkdir(exist_ok = True)
@@ -78,8 +78,8 @@ elif lang == 'Deutsch':
 
     destPath = input('In welchem Ordner soll Notando deine Dateien aufbewahren? Bitte gib einen absoluten Pfad mit / am Ende an: ')+'.notando/'
     copyPath = Path(destPath)
-    installPath = 'C:/users/'+usrname+'/.notando/'
-    installPathPath = Path('C:/users/'+usrname+'/.notando/')
+    installPath = input('Bitte gib dein persönliches Stammverzeichnis an, z.B. C:/users/<deinname>/')+'.notando/'
+    installPathPath = Path(installPath)
 
     try:
         installPathPath.mkdir(exist_ok = True)
