@@ -29,8 +29,8 @@ if lang == 'English':
 
     destPath = input('Where do you want Notando to keep all the files? Please provide an absolute path with / at the end: ')+'.notando/'
     copyPath = Path(destPath)
-    installPath = '/home/'+usrname+'/.notando/'
-    installPathPath = Path('/home/'+usrname+'/.notando/')
+    installPath = input('Please enter your personal home directory, i.e. /home/<yourname>/')+'.notando/'
+    installPathPath = Path(installPath)
 
     try:
         installPathPath.mkdir(exist_ok = True)
@@ -61,7 +61,7 @@ if lang == 'English':
 
         print('--------------------')
         print('Installation successfully completed!')
-        print('You can use Notando by executing the other Python script you should\'ve received together with this one.')
+        print('You can use Notando by executing Notando_0_4_0__LNX.py, that you should\'ve received together with this script.')
         print('If you\'re in doubt how to start Notando, ask the people you\'ve received your copy from for help, or write an email to nina.tolfersheimer@posteo.de')
         print('--------------------')
         input()
@@ -78,9 +78,8 @@ elif lang == 'Deutsch':
 
     destPath = input('In welchem Ordner soll Notando deine Dateien aufbewahren? Bitte gib einen absoluten Pfad mit / am Ende an: ')+'.notando/'
     copyPath = Path(destPath)
-    installPath = '/home/'+usrname+'/.notando/'
-    installPathPath = Path('/home/'+usrname+'/.notando/')
-
+    installPath = input('Bitte gib dein persönliches Stammverzeichnis ein, z.B. /home/<deinname>/')+'.notando/'
+    installPathPath = Path(installPath)
     try:
         installPathPath.mkdir(exist_ok = True)
 
