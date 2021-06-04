@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#Notando v0.2.0 for Linux systems running at least Python 3.6
+#Notando v0.2.1 for Linux systems running at least Python 3.6
 
 #imports
 from pathlib import Path
@@ -271,7 +271,7 @@ def changeLang():
 
 #this is written to the terminal when the program's started
 print('====================')
-print('NOTANDO 0.2.0')
+print('NOTANDO 0.2.1')
 print('The Note Taking And Organizing App – (c) 2021 by Nina Tolfersheimer')
 print('You may share and/or vary Notando yourself, but you are not allowed to use it for commercial purposes.')
 print('When spreading a varied version of Notando, you must name the original author Nina Tolfersheimer')
