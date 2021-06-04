@@ -1,4 +1,4 @@
-# Terms of Use & Data Protection Policy – Notando v1.1
+# Terms of Use & Data Protection Policy – Notando v0.2.1
 
 _The Terms of Use and the Data Protection Policy are hereafter refered to as 'the policy'._
 
