@@ -1,4 +1,4 @@
-# Terms of Use & Data Protection Policy – Notando v0.3.0
+# Terms of Use & Data Protection Policy – Notando v0.4.0
 
 I've created this little tool in my spare free time and with no commercial intentions whatsoever. Notando is open-source, so feel free to edit and spread Notando yourself!
 
@@ -10,4 +10,4 @@ If you wish to contact me, I'd prefer you use the issues function. However, if t
 
 
 
-Notando collects your local username, but **no other personal data**, unless you provide it directly to the script. Please make sure to store your notes in a place only you have access to, because they are not protected by themselves. But that's you responsibility :wink:
+Notando collects your local username, but **no other personal data**, unless you provide it directly to the script. Please make sure to store your notes in a place only you have access to, because they are not protected by themselves. But that's your responsibility :wink:
