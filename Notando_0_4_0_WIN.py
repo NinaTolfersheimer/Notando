@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#Notando v0.3.0 for Windows systems running at least Python 3.6
+#Notando v0.4.0 for Windows systems running at least Python 3.6
 
 #imports
 from pathlib import Path
@@ -543,7 +543,7 @@ def changeLang(newlang):
 #this is written to the terminal when the program's started
 if lang == 'English':
     print('====================')
-    print('NOTANDO 0.3.0')
+    print('NOTANDO 0.4.0')
     print('The Note Taking And Organizing App – by Nina Tolfersheimer')
     print('Open source, feel free to edit and spread Notando :)')
     print('====================')
@@ -551,7 +551,7 @@ if lang == 'English':
     print('')
 elif lang == 'Deutsch':
     print('====================')
-    print('NOTANDO 0.3.0')
+    print('NOTANDO 0.4.0')
     print('Die App, um Notizen aufzunehmen und zu verwalten (The Note Taking And Organizing App) – von Nina Tolfersheimer')
     print('Open-Source, bearbeite und verbreite Notando gerne :)')
     print('====================')
