@@ -1,8 +1,8 @@
 # Notando
-_A small open-source alternative to MS OneNote etc. Notando is still under construction and currently runs in v0.3.0_
+_A small open-source alternative to MS OneNote etc. Notando is still under construction and currently runs in v0.4.0_
 
-## What Notando 0.3.0 can do
-Notando 0.3.0 presents you with a menu to choose options from. You can:
+## What Notando 0.4.0 can do
+Notando 0.4.0 presents you with a menu to choose options from. You can:
 
 1. Take a note – _Allows you to take a note and store it in a specific category. This will take some string and store in a file with the path_ ```<standard path>/.notando/notes/<provided category>/<provided headline>.txt```
 _. The so-called 'standard path' is the path to the directory where Notando lives itself._
@@ -17,15 +17,16 @@ _and present you with the content of the specified text file._
   * Copy Notando – _Allows you to make a backup of Notando including all the notes and preferences. Takes a path to a directory **THAT IS NOT YET TO EXIST**, deletes this directory recursively if it already exists (useful for regular backing up to the same location), re-makes it, and copies the .notando directory currently set as standard path to the new directory_
 _Note that this won't actually make a backup but simply copy the entire installation to the provided location_
   * Change standard path – _In case you've moved your .notando file somewhere else, this tells Notando about it. Takes that directory's path and overwrites the_ ```<standard path>/.notando/preferences/stdpath.txt``` _file with this new content._ 
+  * Change language – _Allows you to choose between English and German. Takes the desired language and overwrites_ ```<standard path>/.notando/preferences/lang.txt``` _with it. Checks whether the language you provided is available beforehand._
   * Quit submenu and return to main menu – _Effectively sends a terminate signal which collapses the sub-menu and shows the main menu._
 6. Quit – _Sends a terminating signal to exit the program._ `KeyboardInterrupt` / `Ctrl + C` _should work as well._
 
-## How Notando 0.3.0 works
-Notando 0.3.0 lets you take and manage notes and organizes them into _categories_. Those categories are effectively the directories the specific note files live in. Every note takes a specific _headline_, which is effectively the file's name, which is why it should only contain letters & numbers and **no whitespace**.
+## How Notando 0.4.0 works
+Notando 0.4.0 lets you take and manage notes and organizes them into _categories_. Those categories are effectively the directories the specific note files live in. Every note takes a specific _headline_, which is effectively the file's name, which is why it should only contain letters & numbers and **no whitespace**.
 
-Notando 0.3.0 stores your notes as plain .txt files, but an update to a markup language is currently developed. No format specifiers, even common ones like \n, are currently neither recognized nor processed.
+Notando 0.4.0 stores your notes as plain .txt files, but an update to a markup language is currently developed. No format specifiers, even common ones like \n, are currently neither recognized nor processed.
 
-Notando 0.3.0 operates by default from a .notando directory in your home directory, though this can be customized.
+Notando 0.4.0 operates by default from a .notando directory in your home directory, though this can be customized.
 
 You're explicitely encouraged to check out the actual code yourself at [GitHub](https://github.com/NinaTolfersheimer/Notando/).
 
