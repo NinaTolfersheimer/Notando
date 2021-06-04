@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-#PURPOSE: This script will set up the required directories and files for Notando 0.2.0 on your Linux device. It should work as well on interchangeable devices such as USB-sticks
+#PURPOSE: This script will set up the required directories and files for Notando 0.2.1 on your Linux device.
 
 #Imports
 from pathlib import Path
@@ -11,7 +11,7 @@ usrname = getuser()
 
 #this will be written to the terminal when the program is started
 print('====================')
-print('NOTANDO 0.2.0 – Installer for Linux')
+print('NOTANDO 0.2.1 – Installer for Linux')
 print('====================')
 print()
 print('Thanks for choosing Notando!')
@@ -22,8 +22,8 @@ print('PLEASE NOTE – IMPORTANT INFORMATION – READ CAREFULLY')
 print()
 print()
 print('====================')
-print('NOTANDO 0.2.0 – Terms of Use')
-print('NOTANDO 0.2.0 – Data Protection Policy')
+print('NOTANDO 0.2.1 – Terms of Use')
+print('NOTANDO 0.2.1 – Data Protection Policy')
 print('====================')
 print()
 print('I. Definitions, limits of this policy')
@@ -65,10 +65,10 @@ while yesno not in ['yes', 'y', 'no', 'n']:
 
 if yesno == 'yes' or yesno == 'y':
 
-    destPath = input('Where do you want Notando to keep all the files? Please provide an absolute path with / at the end: ')+'.notando_0_2_0/'
+    destPath = input('Where do you want Notando to keep all the files? Please provide an absolute path with / at the end: ')+'.notando/'
     copyPath = Path(destPath)
-    installPath = '/home/'+usrname+'/.notando_0_2_0/'
-    installPathPath = Path('/home/'+usrname+'/.notando_0_2_0/')
+    installPath = '/home/'+usrname+'/.notando/'
+    installPathPath = Path('/home/'+usrname+'/.notando/')
 
     try:
         installPath.mkdir(exist_ok = True)
