@@ -12,6 +12,8 @@ from getpass import getuser
 global path
 global usrname
 global lang
+global availableLangs
+availableLangs  = ['English', 'Deutsch']
 #path = '/home/pi/.notando/notes/' #deprecated
 #prefPath = '/home/pi/.notando/preferences/' #deprecated
 #Path = '/home/pi/.notando/' #deprecated
@@ -22,6 +24,7 @@ with open('/home/'+usrname+'/.notando/preferences/stdpath.txt', 'rt') as f:
 
 with open('/home/'+usrname+'/.notando/preferences/lang.txt', 'rt') as f:
     lang = f.read()
+    availableLangs.remove(lang)
     
 #main menu
 def menu(language):
@@ -128,7 +131,7 @@ def menu(language):
                 print('--------------------')
                 print('Eine Notiz verfassen')
                 print('--------------------')
-                print('Achtung! Die Überschrift darf nur die herkömmlichen Zeichen für die Benennung von Dateien beinhalten (als keine Sonderzeichen, Leerzeichen, Umlaute)')
+                print('Achtung! Die Überschrift darf nur die herkömmlichen Zeichen für die Benennung von Dateien beinhalten (also keine Sonderzeichen, Leerzeichen, Umlaute)')
                 print('Achtung! Diese Aktion wird jede bestehende Notiz mit derselben Überschrift unwiederbringlich überschreiben. Besser du schaust erst nach, ob es solche Notizen gibt.')
                 print('Bitte beachte auch: Im Moment ist es unmöglich, deinen Text auf irgendeine Art zu formatieren. Selbst gewöhnliche Formatierer wie \n funktionieren nicht und werden ignoriert.')
                 category = input('Kategorie: ')
@@ -162,7 +165,7 @@ def menu(language):
                 print('--------------------')
                 print('Eine Notiz löschen')
                 print('--------------------')
-                print('Achtung! Dieser Vorgang löscht die Notiz unwiederruflich.')
+                print('Achtung! Dieser Vorgang löscht die Notiz unwiderruflich.')
                 category = input('Kategorie: ')
                 filename = input('Überschrift: ')
                 removeN(lang, path+'notes/'+category+'/', filename)
@@ -219,7 +222,7 @@ def readN(language, argpath, filename):
         try:
             with open(argpath+filename+'.txt', 'rt') as f:
                 print('--------------------')
-                print(filename)
+                print(filename+':')
                 print(f.read())
                 print('--------------------')
             input('Drücke Enter, um fortzufahren.')
@@ -262,7 +265,7 @@ def edit(language, argpath, filename):
 
 #deleting a note irreversibly
 def removeN(language, argpath, filename):
-    if langauge == 'English':
+    if language == 'English':
         try:
             Path(argpath+filename+'.txt').unlink()
             input(filename+' removed successfully. Press enter to proceed.')
@@ -279,7 +282,7 @@ def removeN(language, argpath, filename):
             menu(lang)
 
 #show 
-def prefs():
+def prefs(language):
     if language == 'English':
         try:
             #this sub-menu works the same way as the main menu
@@ -294,7 +297,7 @@ def prefs():
                     print('3. Rename a category')
                     print('4. Copy Notando')
                     print('5. Change standard path')
-                    print('6. Change language [not available yet]')
+                    print('6. Change language')
                     print('7. Return to main menu')
                     print('--------------------')
                     subchoice = input()
@@ -333,8 +336,16 @@ def prefs():
                     print('Caution! Only do this if you\'ve manually moved your .notando file.')
                     newpath = input('Enter the absolute path to the new location of .notando with / at the end: ')
                     changePath(lang, newpath)
-                elif subchoice == '6': #change the language. Not yet available.
-                    changeLang(lang)
+                elif subchoice == '6': #change the language
+                    print('--------------------')
+                    print('Change language')
+                    print('--------------------')
+                    print('Active language: '+lang)
+                    print('Other available languages: '+str(availableLangs))
+                    newLang = input('To which language do you wish to change? Choose  from '+str(availableLangs)+'. ')
+                    while newLang not in availableLangs:
+                        newLang = input('This language is not available. Mind the case and choose from '+str(availableLangs)+'. ')
+                    changeLang(newLang)
                 elif subchoice == '7': #set the terminatePrefs variable to True in order to leave the prefs sub-menu
                     terminatePrefs = True
                 subchoice = '0' #ensure the sub-menu is reusable
@@ -356,7 +367,7 @@ def prefs():
                     print('3. Kategorie umbenennen')
                     print('4. Notando kopieren (Backup-Kopie)')
                     print('5. Den Standard-Pfad ändern')
-                    print('6. Die Sprache ändern [noch nicht verfügbar]')
+                    print('6. Die Sprache ändern')
                     print('7. Zurück zum Hauptmenü')
                     print('--------------------')
                     subchoice = input()
@@ -395,8 +406,16 @@ def prefs():
                     print('Achtung! Tu das nur, wenn du deinen .notando-Ordner manuell verschoben hast.')
                     newpath = input('Der neue absolute Pfad des .notando-Ordners mit / am Ende: ')
                     changePath(lang, newpath)
-                elif subchoice == '6': #change the language. Not yet available.
-                    changeLang(lang)
+                elif subchoice == '6': #change the language.
+                    print('--------------------')
+                    print('Sprache ändern')
+                    print('--------------------')
+                    print('Momentane Sprache: '+lang)
+                    print('Weitere verfügbare Sprachen: '+str(availableLangs))
+                    newLang = input('Zu welcher Sprache möchtest du wechseln? Wähle aus '+str(availableLangs)+'. ')
+                    while newLang not in availableLangs:
+                        newLang = input('Diese Sprache ist nicht verfügbar. Beachte Groß- und Kleinschreibung und wähle aus '+str(availableLangs)+'. ')
+                    changeLang(newLang)
                 elif subchoice == '7': #set the terminatePrefs variable to True in order to leave the prefs sub-menu
                     terminatePrefs = True
                 subchoice = '0' #ensure the sub-menu is reusable
@@ -509,11 +528,17 @@ def copyNotando(language, newpath):
             prefs(lang)
 
 #pref-option: change the language
-def changeLang(language):
-    if language == 'English':
-        input('This feature is not available yet. Hope you do speak English... Either way, please press Enter to proceed')
-    elif language == 'Deutsch':
-        input('Diese Funktion ist noch nicht verfügbar. Ich hoffe, du sprichst Deutsch... So oder so, drücke Enter um fortzufahren.')
+def changeLang(newlang):
+    try:
+        with open('/home/'+usrname+'/.notando/preferences/lang.txt', 'wt') as f:
+            f.write(newlang)
+            lang = newlang
+        if lang == 'English':
+            input('Language successfull changed to English. App restart required for the change to take effect. Press enter to proceed.')
+        elif lang == 'Deutsch':
+            input('Sprache erfolgreich nach Deutsch geändert. Programmneustart erforderlich um die Änderungen wirksam zu machen. Drücke Enter, um fortzufahren.')
+    except BaseException as error:
+        print('An error occured: / Fehler: '+error)
 
 #this is written to the terminal when the program's started
 if lang == 'English':
