@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#Notando v0.4.0 for Linux systems running at least Python 3.6
+#Notando v1.0.1 for Linux systems running at least Python 3.6
 
 #imports
 from pathlib import Path
@@ -624,19 +624,19 @@ def changeLang(newlang):
 #this is written to the terminal when the program's started
 if lang == 'English':
     print('====================')
-    print('NOTANDO 0.4.0')
+    print('NOTANDO 1.0.1')
     print('The Note Taking And Organizing App – by Nina Tolfersheimer')
     print('Open source, feel free to edit and spread Notando :)')
     print('====================')
-    print('Please notice that this version of Notando should be considered unstable.')
+    print('Please notice that although this version of Notando can be considered stable, but errors may occur any time.')
     print('')
 elif lang == 'Deutsch':
     print('====================')
-    print('NOTANDO 0.4.0')
+    print('NOTANDO 1.0.1')
     print('Die App, um Notizen aufzunehmen und zu verwalten (The Note Taking And Organizing App) – von Nina Tolfersheimer')
     print('Open-Source, bearbeite und verbreite Notando gerne :)')
     print('====================')
-    print('Bitte beachte, dass diese Version als "unstable" anzusehen ist')
+    print('Auch wenn diese Version "stable" ist, kann sie Fehler enthalten')
     print('')
 
 menu(lang) #initialy calling the main menu
