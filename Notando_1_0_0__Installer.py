@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-#PURPOSE: This script will set up the required directories and files for Notando 0.4.0 on your Linux device.
+#PURPOSE: This script will set up the required directories and files for Notando 1.0.0 on your computer, regardless of your OS.
 
 #Imports
 from pathlib import Path
@@ -13,7 +13,7 @@ availableLangs = ['English', 'Deutsch']
 
 #this will be written to the terminal when the program is started
 print('====================')
-print('NOTANDO 0.4.0 – Installer for Linux')
+print('NOTANDO 1.0.0 – Installer')
 print('====================')
 print()
 lang = input('Which language do you want to use for installation and as default? | Welche Sprache möchtest du für die Installation und als Standardwert benutzen? | '+str(availableLangs))
@@ -27,9 +27,9 @@ if lang == 'English':
     input('Got this? Press enter to proceed.')
     print()
 
-    destPath = input('Where do you want Notando to keep all the files? Please provide an absolute path with / at the end: ')+'.notando/'
+    destPath = input('Where do you want Notando to keep all the files? Please provide an absolute path with / at the end: ')+'.notando/')
     copyPath = Path(destPath)
-    installPath = input('Please enter your personal home directory, i.e. /home/<yourname>/')+'.notando/'
+    installPath = input('Please enter your personal home directory, i.e. /home/<yourname>/ or C:/users/<yourname>')+'.notando/')
     installPathPath = Path(installPath)
 
     try:
@@ -61,7 +61,7 @@ if lang == 'English':
 
         print('--------------------')
         print('Installation successfully completed!')
-        print('You can use Notando by executing Notando_0_4_0__LNX.py, that you should\'ve received together with this script.')
+        print('You can use Notando by executing Notando_1_0_0__LNX.py for Linux devices or Notando_1_0_0__WIN.py for Windows devices, that you should\'ve received together with this script.')
         print('If you\'re in doubt how to start Notando, ask the people you\'ve received your copy from for help, or write an email to nina.tolfersheimer@posteo.de')
         print('--------------------')
         input()
@@ -76,9 +76,9 @@ elif lang == 'Deutsch':
     input('Alles klar? Drücke Enter, um fortzufahren.')
     print()
 
-    destPath = input('In welchem Ordner soll Notando deine Dateien aufbewahren? Bitte gib einen absoluten Pfad mit / am Ende an: ')+'.notando/'
+    destPath = input('In welchem Ordner soll Notando deine Dateien aufbewahren? Bitte gib einen absoluten Pfad mit / am Ende an: ')+'.notando/')
     copyPath = Path(destPath)
-    installPath = input('Bitte gib dein persönliches Stammverzeichnis ein, z.B. /home/<deinname>/')+'.notando/'
+    installPath = input('Bitte gib dein persönliches Stammverzeichnis ein, z.B. /home/<deinname>/ oder C:/users/<deinname>')+'.notando/')
     installPathPath = Path(installPath)
     try:
         installPathPath.mkdir(exist_ok = True)
@@ -109,7 +109,7 @@ elif lang == 'Deutsch':
 
         print('--------------------')
         print('Installation erfolgreich abgeschlossen!')
-        print('Du kannst Notando benutzen, indem du das Script Notando_0_4_0__LNX.py ausführst, das du bekommen haben solltest.')
+        print('Du kannst Notando benutzen, indem du das Script Notando_1_0_0__LNX.py (für Linux) oder Notando_1_0_0__WIN.py (für Windows) ausführst, das du bekommen haben solltest.')
         print('Wenn du dir unsicher bist wie du Notando startest, frag die Leute, von denen du deine Kopie von Notando bekommen hast, oder schreib eine Mail an nina.tolfersheimer@posteo.de')
         print('--------------------')
         input()
