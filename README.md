@@ -1,8 +1,8 @@
 # Notando
-_A small open-source alternative to MS OneNote etc. Notando is still under construction and currently runs in v0.4.0_
+_A small open-source alternative to MS OneNote etc. Notando is actively maintained and currently runs in v1.1.0_
 
-## What Notando 0.4.0 can do
-Notando 0.4.0 presents you with a menu to choose options from. You can:
+## What Notando 1.1.0 can do
+Notando 1.1.0 presents you with a menu to choose options from. You can:
 
 1. Take a note – _Allows you to take a note and store it in a specific category. This will take some string and store in a file with the path_ ```<standard path>/.notando/notes/<provided category>/<provided headline>.txt```
 _. The so-called 'standard path' is the path to the directory where Notando lives itself._
@@ -21,12 +21,12 @@ _Note that this won't actually make a backup but simply copy the entire installa
   * Quit submenu and return to main menu – _Effectively sends a terminate signal which collapses the sub-menu and shows the main menu._
 6. Quit – _Sends a terminating signal to exit the program._ `KeyboardInterrupt` / `Ctrl + C` _should work as well._
 
-## How Notando 0.4.0 works
-Notando 0.4.0 lets you take and manage notes and organizes them into _categories_. Those categories are effectively the directories the specific note files live in. Every note takes a specific _headline_, which is effectively the file's name, which is why it should only contain letters & numbers and **no whitespace**.
+## How Notando 1.1.0 works
+Notando 1.1.0 lets you take and manage notes and organizes them into _categories_. Those categories are effectively the directories the specific note files live in. Every note takes a specific _headline_, which is effectively the file's name, which is why it should only contain letters & numbers and **no whitespace**.
 
-Notando 0.4.0 stores your notes as plain .txt files, but an update to a markup language is currently developed. No format specifiers, even common ones like \n, are currently neither recognized nor processed.
+Notando 1.1.0 stores your notes as plain .txt files, but an update to a markup language is currently developed. Any format specifiers, even common ones like \n, are currently neither recognized nor processed.
 
-Notando 0.4.0 operates by default from a .notando directory in your home directory, though this can be customized.
+Notando 1.1.0 operates by default from a .notando directory in your home directory, though this can be customized.
 
 You're explicitely encouraged to check out the actual code yourself at [GitHub](https://github.com/NinaTolfersheimer/Notando/).
 
