@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-#Notando v0.4.0 for Windows systems running at least Python 3.6
+#Notando v1.1.0 for Windows systems running at least Python 3.6
 
 #imports
 from pathlib import Path
 from shutil import rmtree, copytree
 from getpass import getuser
+import os
 
 #declaration of global variables
 #global path #deprecated
@@ -56,6 +57,12 @@ def menu(language):
                 print('Caution! Headline may only contain common characters for naming files.')
                 print('Caution! This action will overwrite any existing notes sharing the same headline irreversibly. Better check for such if in doubt.')
                 print('Please note as well: It\'s impossible at the present state of development to format your input by any means, so format specifiers won\'t be processed.')
+                print()
+                print('Available categories:')
+                cats = os.listdir(path+'notes/')
+                for n in cats:
+                    print('+ '+n)
+                print()
                 category = input('Category: ')
                 filename = input('Headline: ')
                 text = input('Text: ')
@@ -67,7 +74,16 @@ def menu(language):
                 print('--------------------')
                 print('Read a note')
                 print('--------------------')
+                print('Available categories:')
+                cats = os.listdir(path+'notes/')
+                for n in cats:
+                    print('+ '+n)
                 category = input('Category: ')
+                print('Notes in '+category+':')
+                nts = os.listdir(path+'notes/'+category)
+                for m in nts:
+                    print('-- '+m)
+                print()
                 filename = input('Headline: ')
                 readN(lang, path+'notes/'+category+'/', filename)
 
@@ -77,7 +93,16 @@ def menu(language):
                 print('--------------------')
                 print('Edit a note')
                 print('--------------------')
+                print('Available categories:')
+                cats = os.listdir(path+'notes/')
+                for n in cats:
+                    print('+ '+n)
                 category = input('Category: ')
+                print('Notes in '+category+':')
+                nts = os.listdir(path+'notes/'+category)
+                for m in nts:
+                    print('-- '+m)
+                print()
                 filename = input('Headline: ')
                 edit(lang, path+'notes/'+category+'/', filename)
 
@@ -134,6 +159,12 @@ def menu(language):
                 print('Achtung! Die Überschrift darf nur die herkömmlichen Zeichen für die Benennung von Dateien beinhalten (also keine Sonderzeichen, Leerzeichen, Umlaute)')
                 print('Achtung! Diese Aktion wird jede bestehende Notiz mit derselben Überschrift unwiederbringlich überschreiben. Besser du schaust erst nach, ob es solche Notizen gibt.')
                 print('Bitte beachte auch: Im Moment ist es unmöglich, deinen Text auf irgendeine Art zu formatieren. Selbst gewöhnliche Formatierer wie \n funktionieren nicht und werden ignoriert.')
+                print()
+                print('Verfügbare Kategorien:')
+                cats = os.listdir(path+'notes/')
+                for n in cats:
+                    print('+ '+n)
+                print()
                 category = input('Kategorie: ')
                 filename = input('Überschrift: ')
                 text = input('Text: ')
@@ -145,7 +176,16 @@ def menu(language):
                 print('--------------------')
                 print('Eine Notiz lesen')
                 print('--------------------')
+                print('Verfügbare Kategorien:')
+                cats = os.listdir(path+'notes/')
+                for n in cats:
+                    print('+ '+n)
                 category = input('Kategorie: ')
+                print('Notizen in '+category+':')
+                nts = os.listdir(path+'notes/'+category)
+                for m in nts:
+                    print('-- '+m)
+                print()
                 filename = input('Überschrift: ')
                 readN(lang, path+'notes/'+category+'/', filename)
 
@@ -155,7 +195,16 @@ def menu(language):
                 print('--------------------')
                 print('Eine Notiz bearbeiten')
                 print('--------------------')
+                print('Verfügbare Kategorien:')
+                cats = os.listdir(path+'notes/')
+                for n in cats:
+                    print('+ '+n)
                 category = input('Kategorie: ')
+                print('Notizen in '+category+':')
+                nts = os.listdir(path+'notes/'+category)
+                for m in nts:
+                    print('-- '+m)
+                print()
                 filename = input('Überschrift: ')
                 edit(lang, path+'notes/'+category+'/', filename)
 
@@ -166,7 +215,17 @@ def menu(language):
                 print('Eine Notiz löschen')
                 print('--------------------')
                 print('Achtung! Dieser Vorgang löscht die Notiz unwiderruflich.')
+                print()
+                print('Verfügbare Kategorien:')
+                cats = os.listdir(path+'notes/')
+                for n in cats:
+                    print('+ '+n)
                 category = input('Kategorie: ')
+                print('Notizen in '+category+':')
+                nts = os.listdir(path+'notes/'+category)
+                for m in nts:
+                    print('-- '+m)
+                print()
                 filename = input('Überschrift: ')
                 removeN(lang, path+'notes/'+category+'/', filename)
 
@@ -311,12 +370,22 @@ def prefs(language):
                     print('--------------------')
                     print('Remove a category')
                     print('--------------------')
+                    print('Available categories:')
+                    cats = os.listdir(path+'notes/')
+                    for n in cats:
+                        print('+ '+n)
+                    print()
                     catname = input('Title: ')
                     rmcat(lang, path+'notes/', catname)
                 elif subchoice == '3': #prepare & rename a category
                     print('--------------------')
                     print('Rename a category')
                     print('--------------------')
+                    print('Available categories:')
+                    cats = os.listdir(path+'notes/')
+                    for n in cats:
+                        print('+ '+n)
+                    print()
                     oldname = input('current name: ')
                     newname = input('new name: ')
                     renameCat(lang, oldname, newname)
@@ -381,12 +450,22 @@ def prefs(language):
                     print('--------------------')
                     print('Kategorie löschen')
                     print('--------------------')
+                    print('Verfügbare Kategorien:')
+                    cats = os.listdir(path+'notes/')
+                    for n in cats:
+                        print('+ '+n)
+                    print()
                     catname = input('Titel: ')
                     rmcat(lang, path+'notes/', catname)
                 elif subchoice == '3': #prepare & rename a category
                     print('--------------------')
                     print('Kategorie umbenennen')
                     print('--------------------')
+                    print('Verfügbare Kategorien:')
+                    cats = os.listdir(path+'notes/')
+                    for n in cats:
+                        print('+ '+n)
+                    print()
                     oldname = input('Aktueller Name: ')
                     newname = input('Neuer Name: ')
                     renameCat(lang, oldname, newname)
@@ -543,7 +622,7 @@ def changeLang(newlang):
 #this is written to the terminal when the program's started
 if lang == 'English':
     print('====================')
-    print('NOTANDO 0.4.0')
+    print('NOTANDO 1.1.0')
     print('The Note Taking And Organizing App – by Nina Tolfersheimer')
     print('Open source, feel free to edit and spread Notando :)')
     print('====================')
@@ -551,7 +630,7 @@ if lang == 'English':
     print('')
 elif lang == 'Deutsch':
     print('====================')
-    print('NOTANDO 0.4.0')
+    print('NOTANDO 1.1.0')
     print('Die App, um Notizen aufzunehmen und zu verwalten (The Note Taking And Organizing App) – von Nina Tolfersheimer')
     print('Open-Source, bearbeite und verbreite Notando gerne :)')
     print('====================')
