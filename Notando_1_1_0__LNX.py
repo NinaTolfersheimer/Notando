@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#Notando v1.0.1 for Linux systems running at least Python 3.6
+#Notando v1.1.0 for Linux systems running at least Python 3.6
 
 #imports
 from pathlib import Path
@@ -74,15 +74,16 @@ def menu(language):
                 print('--------------------')
                 print('Read a note')
                 print('--------------------')
-                print('Available structure:')
+                print('Available categories:')
                 cats = os.listdir(path+'notes/')
                 for n in cats:
                     print('+ '+n)
-                    nts = os.listdir(path+'notes/'+n)
-                    for m in nts:
-                        print('-- '+m)
-                    print()
                 category = input('Category: ')
+                print('Notes in '+category+':')
+                nts = os.listdir(path+'notes/'+category)
+                for m in nts:
+                    print('-- '+m)
+                print()
                 filename = input('Headline: ')
                 readN(lang, path+'notes/'+category+'/', filename)
 
@@ -96,11 +97,12 @@ def menu(language):
                 cats = os.listdir(path+'notes/')
                 for n in cats:
                     print('+ '+n)
-                    nts = os.listdir(path+'notes/'+n)
-                    for m in nts:
-                        print('-- '+m)
-                    print()
                 category = input('Category: ')
+                print('Notes in '+category+':')
+                nts = os.listdir(path+'notes/'+category)
+                for m in nts:
+                    print('-- '+m)
+                print()
                 filename = input('Headline: ')
                 edit(lang, path+'notes/'+category+'/', filename)
 
@@ -182,15 +184,16 @@ def menu(language):
                 print('--------------------')
                 print('Eine Notiz lesen')
                 print('--------------------')
-                print('Verfügbare Struktur:')
+                print('Verfügbare Kategorien:')
                 cats = os.listdir(path+'notes/')
                 for n in cats:
                     print('+ '+n)
-                    nts = os.listdir(path+'notes/'+n)
-                    for m in nts:
-                        print('-- '+m)
-                    print()
                 category = input('Kategorie: ')
+                print('Notizen in '+category+':')
+                nts = os.listdir(path+'notes/'+category)
+                for m in nts:
+                    print('-- '+m)
+                print()
                 filename = input('Überschrift: ')
                 readN(lang, path+'notes/'+category+'/', filename)
 
@@ -200,15 +203,16 @@ def menu(language):
                 print('--------------------')
                 print('Eine Notiz bearbeiten')
                 print('--------------------')
-                print('Verfügbare Struktur:')
+                print('Verfügbare Kategorien:')
                 cats = os.listdir(path+'notes/')
                 for n in cats:
                     print('+ '+n)
-                    nts = os.listdir(path+'notes/'+n)
-                    for m in nts:
-                        print('-- '+m)
-                    print()
                 category = input('Kategorie: ')
+                print('Notizen in '+category+':')
+                nts = os.listdir(path+'notes/'+category)
+                for m in nts:
+                    print('-- '+m)
+                print()
                 filename = input('Überschrift: ')
                 edit(lang, path+'notes/'+category+'/', filename)
 
@@ -219,15 +223,16 @@ def menu(language):
                 print('Eine Notiz löschen')
                 print('--------------------')
                 print('Achtung! Dieser Vorgang löscht die Notiz unwiderruflich.')
-                print('Verfügbare Struktur:')
+                print('Verfügbare Kategorien:')
                 cats = os.listdir(path+'notes/')
                 for n in cats:
                     print('+ '+n)
-                    nts = os.listdir(path+'notes/'+n)
-                    for m in nts:
-                        print('-- '+m)
-                    print()
                 category = input('Kategorie: ')
+                print('Notizen in '+category+':')
+                nts = os.listdir(path+'notes/'+category)
+                for m in nts:
+                    print('-- '+m)
+                print()
                 filename = input('Überschrift: ')
                 removeN(lang, path+'notes/'+category+'/', filename)
 
@@ -624,7 +629,7 @@ def changeLang(newlang):
 #this is written to the terminal when the program's started
 if lang == 'English':
     print('====================')
-    print('NOTANDO 1.0.1')
+    print('NOTANDO 1.1.0')
     print('The Note Taking And Organizing App – by Nina Tolfersheimer')
     print('Open source, feel free to edit and spread Notando :)')
     print('====================')
@@ -632,7 +637,7 @@ if lang == 'English':
     print('')
 elif lang == 'Deutsch':
     print('====================')
-    print('NOTANDO 1.0.1')
+    print('NOTANDO 1.1.0')
     print('Die App, um Notizen aufzunehmen und zu verwalten (The Note Taking And Organizing App) – von Nina Tolfersheimer')
     print('Open-Source, bearbeite und verbreite Notando gerne :)')
     print('====================')
