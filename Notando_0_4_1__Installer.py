@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+#CAUTION: This installer version is deprecated and has been replaced by the united installer for any OS.
+
 #PURPOSE: This script will set up the required directories and files for Notando 0.4.0 on your Windows device.
 
 #Imports
