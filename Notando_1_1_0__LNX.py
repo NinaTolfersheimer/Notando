@@ -117,11 +117,12 @@ def menu(language):
                 cats = os.listdir(path+'notes/')
                 for n in cats:
                     print('+ '+n)
-                    nts = os.listdir(path+'notes/'+n)
-                    for m in nts:
-                        print('-- '+m)
-                    print()
                 category = input('Category: ')
+                print('Notes in '+category+':')
+                nts = os.listdir(path+'notes/'+category)
+                for m in nts:
+                    print('-- '+m)
+                print()
                 filename = input('Headline: ')
                 removeN(lang, path+'notes/'+category+'/', filename)
 
