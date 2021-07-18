@@ -1,4 +1,4 @@
-# Notando
+# The Note Taking And Organizing App
 Notando is a small Python-based alternative to MS OneNote etc.
 - Although it's not really _as good_ right now, I hope it's getting significantly better in the future!
 - Notando currently runs v1.x.y and is still worked on, so if you find it too impractical at the moment, stay tuned for updates 🙂.
