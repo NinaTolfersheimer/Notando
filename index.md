@@ -6,9 +6,9 @@ Notando is a small Python-based alternative to MS OneNote etc.
 - Notando is working under Windows and Linux (GNU/Debian), though it could work on macOS as well.
 - _IMPORTANT:_ Notando comes with **no warranty whatsoever**, and you're running it **completely at your own risk!**
 
-If case you've expected some kind of documentation or something on this site, don't worry! I'll add one soon... :wink:
+If case you've expected some kind of documentation or something on this site, don't worry! I'll add one soon... 😉
 
 
 ```Python
-from Nina Tolfersheimer import Notando
+from NinaTolfersheimer import Notando
 ```
