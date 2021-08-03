@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#Notando v1.1.0 for Linux systems running at least Python 3.6
+#Notando v1.1.1 for Linux systems running at least Python 3.6
 
 #imports
 from pathlib import Path
@@ -419,7 +419,7 @@ def prefs(language):
                     print('--------------------')
                     print('Active language: '+lang)
                     print('Other available languages: '+str(availableLangs))
-                    newLang = input('To which language do you wish to change? Choose  from '+str(availableLangs)+'. ')
+                    newLang = input('To which language do you wish to change? Choose from '+str(availableLangs)+'. ')
                     while newLang not in availableLangs:
                         newLang = input('This language is not available. Mind the case and choose from '+str(availableLangs)+'. ')
                     changeLang(newLang)
@@ -630,17 +630,19 @@ def changeLang(newlang):
 #this is written to the terminal when the program's started
 if lang == 'English':
     print('====================')
-    print('NOTANDO 1.1.0')
+    print('NOTANDO 1.1.1')
     print('The Note Taking And Organizing App – by Nina Tolfersheimer')
     print('Open source, feel free to edit and spread Notando :)')
+    print('Any Problems? Open an issue on GitHub or mail to nina.tolfersheimer@gmail.com')
     print('====================')
     print('Please notice that although this version of Notando can be considered stable, but errors may occur any time.')
     print('')
 elif lang == 'Deutsch':
     print('====================')
-    print('NOTANDO 1.1.0')
+    print('NOTANDO 1.1.1')
     print('Die App, um Notizen aufzunehmen und zu verwalten (The Note Taking And Organizing App) – von Nina Tolfersheimer')
     print('Open-Source, bearbeite und verbreite Notando gerne :)')
+    print('Probleme? Eröffne ein Issue auf GitHub oder schreib eine Mail an nina.tolfersheimer@gmail.com')
     print('====================')
     print('Auch wenn diese Version "stable" ist, kann sie Fehler enthalten')
     print('')
