@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-#PURPOSE: This script will set up the required directories and files for Notando 1.1.0 on your computer, regardless of your OS.
+#PURPOSE: This script will set up the required directories and files for Notando 1.1.1 on your computer, regardless of your OS.
 
 #Imports
 from pathlib import Path
@@ -13,7 +13,7 @@ availableLangs = ['English', 'Deutsch']
 
 #this will be written to the terminal when the program is started
 print('====================')
-print('NOTANDO 1.1.0 – Installer')
+print('NOTANDO 1.1.1 – Installer')
 print('====================')
 print()
 lang = input('Which language do you want to use for installation and as default? | Welche Sprache möchtest du für die Installation und als Standardwert benutzen? | '+str(availableLangs))
@@ -61,8 +61,8 @@ if lang == 'English':
 
         print('--------------------')
         print('Installation successfully completed!')
-        print('You can use Notando by executing Notando_1_1_0__LNX.py for Linux devices or Notando_1_1_0__WIN.py for Windows devices, that you should\'ve received together with this script.')
-        print('If you\'re in doubt how to start Notando, ask the people you\'ve received your copy from for help, or write an email to nina.tolfersheimer@posteo.de')
+        print('You can use Notando by executing Notando_1_1_1__LNX.py for Linux devices or Notando_1_1_1__WIN.py for Windows devices, that you should\'ve received together with this script.')
+        print('If you\'re in doubt how to start Notando, ask the people you\'ve received your copy from for help, or write an email to nina.tolfersheimer@gmail.com')
         print('--------------------')
         input()
 
@@ -109,8 +109,8 @@ elif lang == 'Deutsch':
 
         print('--------------------')
         print('Installation erfolgreich abgeschlossen!')
-        print('Du kannst Notando benutzen, indem du das Script Notando_1_1_0__LNX.py (für Linux) oder Notando_1_1_0__WIN.py (für Windows) ausführst, das du bekommen haben solltest.')
-        print('Wenn du dir unsicher bist wie du Notando startest, frag die Leute, von denen du deine Kopie von Notando bekommen hast, oder schreib eine Mail an nina.tolfersheimer@posteo.de')
+        print('Du kannst Notando benutzen, indem du das Script Notando_1_1_1__LNX.py (für Linux) oder Notando_1_1_1__WIN.py (für Windows) ausführst, das du bekommen haben solltest.')
+        print('Wenn du dir unsicher bist wie du Notando startest, frag die Leute, von denen du deine Kopie von Notando bekommen hast, oder schreib eine Mail an nina.tolfersheimer@gmail.com')
         print('--------------------')
         input()
 
