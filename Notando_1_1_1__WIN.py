@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#Notando v1.1.0 for Windows systems running at least Python 3.6
+#Notando v1.1.1 for Windows systems running at least Python 3.6
 
 #imports
 from pathlib import Path
@@ -625,16 +625,18 @@ if lang == 'English':
     print('NOTANDO 1.1.0')
     print('The Note Taking And Organizing App – by Nina Tolfersheimer')
     print('Open source, feel free to edit and spread Notando :)')
+    print('Having Problems? Open an issue on GitHub or mail to nina.tolfersheimer@gmail.com')
     print('====================')
-    print('Please notice that this version of Notando should be considered unstable.')
+    print('Please notice that although this version of Notando can be considered stable, bugs or errors may occur any time.')
     print('')
 elif lang == 'Deutsch':
     print('====================')
     print('NOTANDO 1.1.0')
     print('Die App, um Notizen aufzunehmen und zu verwalten (The Note Taking And Organizing App) – von Nina Tolfersheimer')
     print('Open-Source, bearbeite und verbreite Notando gerne :)')
+    print('Probleme? Eröffne einen Issue auf GitHub oder schreib eine Mail an nina.tolfersheimer@gmail.com')
     print('====================')
-    print('Bitte beachte, dass diese Version als "unstable" anzusehen ist')
+    print('Bitte beachte, dass Fehler jederzeit auftreten können, auch wenn diese Version "stable" ist.')
     print('')
 
 menu(lang) #initialy calling the main menu
