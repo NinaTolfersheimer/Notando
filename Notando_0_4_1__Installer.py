@@ -64,7 +64,7 @@ if lang == 'English':
         print('--------------------')
         print('Installation successfully completed!')
         print('You can use Notando by executing Notando_0_4_0__WIN.py, which you should\'ve received together with this one.')
-        print('If you\'re in doubt how to start Notando, ask the people you\'ve received your copy from for help, or write an email to nina.tolfersheimer@posteo.de')
+        print('If you\'re in doubt how to start Notando, ask the people you\'ve received your copy from for help, or write an email to nina.tolfersheimer@gmail.com')
         print('--------------------')
         input()
 
@@ -113,7 +113,7 @@ elif lang == 'Deutsch':
         print('--------------------')
         print('Installation erfolgreich abgeschlossen!')
         print('Du kannst Notando benutzen, indem du das Script Notando_0_4_0__WIN.py ausführst, das du bekommen haben solltest.')
-        print('Wenn du dir unsicher bist wie du Notando startest, frag die Leute, von denen du deine Kopie von Notando bekommen hast, oder schreib eine Mail an nina.tolfersheimer@posteo.de')
+        print('Wenn du dir unsicher bist wie du Notando startest, frag die Leute, von denen du deine Kopie von Notando bekommen hast, oder schreib eine Mail an nina.tolfersheimer@gmail.com')
         print('--------------------')
         input()
 
